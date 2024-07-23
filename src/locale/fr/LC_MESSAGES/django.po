@@ -1,0 +1,426 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2023-09-17 21:27:51\n"
+"PO-Revision-Date: 2023-09-17 21:27:51\n"
+"Last-Translator: Server <root@localhost>\n"
+"Language-Team: English <webmaster@localhost>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: vt1500admin/templates/auth-home.html:61
+msgid ""
+"\n"
+"              UNIO app has been set up to handle one and only one voting event. You can edit the created election until the notice period. Then, the app will automatically send each voter an email to notify them about their voting credentials and instructions. In case of emergency, please do not hesitate to contact our support team through support@unio.vote .\n"
+"            "
+msgstr "Pour du soutien, contactez : support@unio.vote"
+
+#: vt1500admin/templates/auth-voter-home.html:66
+msgid ""
+"\n"
+"              UNIO app has been set up to handle one and only one voting event. You can edit the created election until the notice period. Then, the app will automatically send each voter an email to notify them about their voting credentials and instructions. In case of emergency, please do not hesitate to contact our support team through support@unio.vote .\n"
+"              "
+msgstr "Pour du soutien, contactez : support@unio.vote"
+
+#: vt1500admin/templates/auth-home.html:56
+msgid ""
+"\n"
+"              Your role has been defined as the <b> Authority </b> of the election. In case, that you want to participate in the election as a voter, please insert add your information in the voters list excel file, same as other voters.\n"
+"            "
+msgstr "(changed by mehdi) Pour du soutien, contactez : support@unio.vote"
+
+#: vt1500admin/templates/login-sent.html:12
+msgid ""
+"\n"
+"          If your email address is registered, an email would be sent to you shortly. The email contains a one-time use login link. Please tap the link to login into UNIO CSN-FSSS SPBTPA (Catgorie 3) voting app. It is safe to close this tab.   \n"
+"          "
+msgstr ""
+"Si votre adresse courriel est dans la liste des membres de CSN-FSSS, SPBTPA (Catégorie 3)\r\n"
+"vous recevrez un lien de connexion unique à cette adresse courriel.\r\n"
+"\r\n"
+"Cliquez sur le lien pour vous connecter à l’application de vote UNIO."
+
+#: vt1500admin/templates/ballot2.html:32
+msgid ""
+" \n"
+"              * You will be able to check the results right after the conclusion of voting phase at %(election.voting_end_datetime)s.\n"
+"            "
+msgstr "Vous pourrez consulter les résultats après la période de vote."
+
+#: vt1500admin/templates/ballot2.html:6
+msgid ""
+" \n"
+"            Ballot %(ballot_id)s\n"
+"            "
+msgstr "%"
+
+#: vt1500admin/templates/create2.html:50
+#: vt1500admin/templates/election.html:73
+#: vt1500admin/templates/results.html:31
+msgid "# of Voters"
+msgstr "Nombre de membres"
+
+#: vt1500admin/templates/create2.html:77
+msgid "(View License Agreement)"
+msgstr "(Voir le contrat de service incluant la licence d'utilisation.)"
+
+#: vt1500admin/templates/create2.html:51
+#: vt1500admin/templates/election.html:76
+msgid "(View voters list)"
+msgstr "(Voir la liste des membres)"
+
+#: vt1500admin/templates/ballot0.html:19
+msgid ""
+"* The <b> voting </b> phase starts at {{ election.voting_start_datetime}}. "
+"Please visit the voting page after that."
+msgstr "* La période de vote commence à {{ election.voting_start_datetime}}."
+
+#: vt1500admin/templates/results.html:28
+msgid "21 September 2023"
+msgstr "21 septembre 2023"
+
+#: vt1500admin/templates/election.html:42
+#: vt1500admin/templates/election.html:58
+msgid "Abstain"
+msgstr "Abstention"
+
+#: vt1500admin/templates/create2.html:43
+msgid "Abstain / For / Against"
+msgstr ""
+"- Abstention\r\n"
+"- Pour\r\n"
+"- Contre"
+
+#: vt1500admin/templates/results.html:58 vt1500admin/templates/results.html:97
+msgid "Abstention"
+msgstr "Abstention"
+
+#: vt1500admin/templates/base.html:35
+msgid "Active Election"
+msgstr "Scrutin en cours"
+
+#: vt1500admin/templates/election.html:44
+#: vt1500admin/templates/election.html:60
+#: vt1500admin/templates/results.html:66
+#: vt1500admin/templates/results.html:105
+msgid "Against"
+msgstr "Contre"
+
+#: vt1500admin/templates/auth-home.html:28
+msgid "Authority"
+msgstr "Autorité"
+
+#: vt1500admin/templates/auth-voter-home.html:27
+msgid "Authority and Voter"
+msgstr "Autorité et membre"
+
+#: vt1500admin/templates/ballot2.html:39 vt1500admin/templates/create2.html:98
+#: vt1500admin/templates/voters-list.html:63
+msgid "Back"
+msgstr "Précédent"
+
+#: vt1500admin/templates/ballot.html:12 vt1500admin/templates/ballot0.html:9
+#: vt1500admin/templates/ballot2.html:14
+msgid "Ballot"
+msgstr "Vote"
+
+#: vt1500admin/templates/ballot.html:55
+msgid "Cast Ballot"
+msgstr "Voter"
+
+#: vt1500admin/templates/create2.html:42
+#: vt1500admin/templates/election.html:39
+#: vt1500admin/templates/election.html:55
+msgid "Choices"
+msgstr "Choix"
+
+#: vt1500admin/templates/create2.html:119
+msgid "Close"
+msgstr "Fermer"
+
+#: vt1500admin/templates/create2.html:12
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: vt1500admin/templates/create2.html:93
+msgid "Confirm and Create"
+msgstr "Confirmer et créer le scrutin"
+
+#: vt1500admin/templates/create2.html:11
+msgid "Create"
+msgstr "Créer"
+
+#: vt1500admin/templates/auth-home.html:70
+#: vt1500admin/templates/auth-voter-home.html:83
+#: vt1500admin/templates/create.html:10
+msgid "Create New Election"
+msgstr "Créer un nouveau scrutin"
+
+#: vt1500admin/templates/create.html:5
+msgid "Create New Election (1/2)"
+msgstr "Créer un nouveau scrutin (1/2)"
+
+#: vt1500admin/templates/create2.html:5
+msgid "Create New Election (2/2)"
+msgstr "Créer un nouveau scrutin (2/2)"
+
+#: vt1500admin/templates/create.html:20
+msgid "Create new election (1/2)"
+msgstr "Créer un nouveau scrutin (1/2)"
+
+#: vt1500admin/templates/create2.html:22
+msgid "Create new election (2/2)"
+msgstr "Créer un nouveau scrutin (2/2)"
+
+#: vt1500admin/templates/election.html:69
+msgid "Created at"
+msgstr "Créé à"
+
+#: vt1500admin/templates/results.html:129
+msgid "Download Election Data"
+msgstr "Télécharger les informations du scrutin"
+
+#: vt1500admin/templates/election.html:107
+#: vt1500admin/templates/election.html:109
+msgid "Edit election"
+msgstr "Modifier le scrutin"
+
+#: vt1500admin/templates/ballot.html:11 vt1500admin/templates/ballot0.html:8
+#: vt1500admin/templates/ballot2.html:13 vt1500admin/templates/create2.html:10
+#: vt1500admin/templates/results.html:12
+#: vt1500admin/templates/voters-list.html:13
+msgid "Election"
+msgstr "Scrutin"
+
+#: vt1500admin/templates/election.html:12
+#: vt1500admin/templates/election.html:28
+msgid "Election Information"
+msgstr "Information du scrutin"
+
+#: vt1500admin/templates/base.html:30 vt1500admin/templates/results.html:20
+msgid "Election Results"
+msgstr "Résultats du scrutin"
+
+#: vt1500admin/templates/results.html:27
+msgid "Election title"
+msgstr "Nom du scrutin"
+
+#: vt1500admin/templates/voters-list.html:27
+msgid "Email"
+msgstr "Adresse courriel"
+
+#: djui/settings.py:144
+msgid "English"
+msgstr "Anglais"
+
+#: vt1500admin/templates/voters-list.html:25
+msgid "First name"
+msgstr "Prénom"
+
+#: vt1500admin/templates/election.html:43
+#: vt1500admin/templates/election.html:59
+#: vt1500admin/templates/results.html:62
+#: vt1500admin/templates/results.html:101
+msgid "For"
+msgstr "Pour"
+
+#: djui/settings.py:145
+msgid "French"
+msgstr "Français"
+
+#: vt1500admin/templates/ballot.html:9 vt1500admin/templates/create.html:8
+#: vt1500admin/templates/create2.html:8 vt1500admin/templates/election.html:10
+msgid "Home"
+msgstr "Accueil"
+
+#: vt1500admin/templates/voters-list.html:26
+msgid "Last name"
+msgstr "Nom de famille"
+
+#: vt1500admin/templates/create2.html:103
+msgid "License Agreement of UNIO voting software"
+msgstr "Contrat de service incluant la licence d'utilisation de UNIO"
+
+#: vt1500admin/templates/voters-list.html:20
+msgid "List of the election voters"
+msgstr "Liste des membres"
+
+#: vt1500admin/templates/base.html:56
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: vt1500admin/templates/login2.html:23
+msgid "Login"
+msgstr "Connexion"
+
+#: vt1500admin/templates/auth-home.html:19
+#: vt1500admin/templates/auth-voter-home.html:18
+#: vt1500admin/templates/voter-home.html:25
+msgid "Name"
+msgstr "Membre"
+
+#: vt1500admin/templates/base.html:42
+msgid "New election"
+msgstr "Nouveau scrutin"
+
+#: vt1500admin/templates/create.html:63
+msgid "Next"
+msgstr "Suivant"
+
+#: vt1500admin/templates/results.html:70
+#: vt1500admin/templates/results.html:109
+msgid "Not-Attended"
+msgstr "N'a pas voté"
+
+#: vt1500admin/templates/create2.html:54
+#: vt1500admin/templates/election.html:81
+msgid "Notice emails interval"
+msgstr "Période de notification"
+
+#: vt1500admin/templates/create2.html:23
+msgid "Please Confirm the election Information"
+msgstr "Confirmez l'information du scrutin"
+
+#: vt1500admin/templates/login2.html:16
+msgid "Please enter your email to login."
+msgstr "Adresse courriel :"
+
+#: vt1500admin/templates/create.html:21
+msgid "Please input the Election Data"
+msgstr "Entrez l'information du scrutin"
+
+#: vt1500admin/templates/create2.html:29
+#: vt1500admin/templates/election.html:33
+#: vt1500admin/templates/results.html:45
+msgid "Question #1"
+msgstr "Question 1"
+
+#: vt1500admin/templates/create2.html:35
+#: vt1500admin/templates/election.html:49
+#: vt1500admin/templates/results.html:85
+msgid "Question #2"
+msgstr "Question 2"
+
+#: vt1500admin/templates/results.html:51
+msgid "Result #1"
+msgstr "Résultats de la question 1"
+
+#: vt1500admin/templates/results.html:91
+msgid "Result #2"
+msgstr "Résultats de la question 2"
+
+#: vt1500admin/templates/results.html:6 vt1500admin/templates/results.html:13
+msgid "Results"
+msgstr "Résultats"
+
+#: vt1500admin/templates/auth-home.html:27
+#: vt1500admin/templates/auth-voter-home.html:26
+#: vt1500admin/templates/voter-home.html:29
+msgid "Role"
+msgstr "Rôle"
+
+#: vt1500admin/templates/base.html:99
+msgid "Sep. 21 2023"
+msgstr "21 septembre 2023"
+
+#: vt1500admin/templates/auth-voter-home.html:75
+#: vt1500admin/templates/auth-voter-home.html:77
+#: vt1500admin/templates/election.html:116
+#: vt1500admin/templates/election.html:118
+#: vt1500admin/templates/voter-home.html:72
+#: vt1500admin/templates/voter-home.html:74
+msgid "Submit your vote"
+msgstr "Voter"
+
+#: vt1500admin/templates/ballot2.html:26
+msgid "Thank you. Your vote has been recorded."
+msgstr "Votre vote a été reçu."
+
+#: vt1500admin/templates/base.html:10
+msgid "UNIO Voting app"
+msgstr "UNIO"
+
+#: vt1500admin/templates/base.html:49
+msgid "VOTE"
+msgstr "VOTE"
+
+#: vt1500admin/templates/auth-home.html:72
+#: vt1500admin/templates/auth-voter-home.html:85
+msgid "View Election"
+msgstr "Consulter le scrutin"
+
+#: vt1500admin/templates/voter-home.html:79
+msgid "View Election details"
+msgstr "Consulter les informations du scrutin"
+
+#: vt1500admin/templates/election.html:102
+msgid "View Results"
+msgstr "Consulter les résultats"
+
+#: vt1500admin/templates/auth-voter-home.html:31
+#: vt1500admin/templates/auth-voter-home.html:36
+#: vt1500admin/templates/voter-home.html:35
+#: vt1500admin/templates/voter-home.html:40
+msgid "Voted At"
+msgstr "Statut du vote"
+
+#: vt1500admin/templates/voter-home.html:30
+msgid "Voter"
+msgstr "Vote"
+
+#: vt1500admin/templates/voters-list.html:6
+#: vt1500admin/templates/voters-list.html:14
+msgid "Voters' List"
+msgstr "Liste des membres"
+
+#: vt1500admin/templates/auth-home.html:47
+#: vt1500admin/templates/auth-voter-home.html:57
+#: vt1500admin/templates/create2.html:62
+#: vt1500admin/templates/election.html:89
+#: vt1500admin/templates/voter-home.html:61
+msgid "Voting Ends at"
+msgstr "Fin de la période de vote"
+
+#: vt1500admin/templates/auth-home.html:43
+#: vt1500admin/templates/auth-voter-home.html:53
+#: vt1500admin/templates/create2.html:58
+#: vt1500admin/templates/election.html:85
+#: vt1500admin/templates/voter-home.html:57
+msgid "Voting Starts at"
+msgstr "Début de la période de vote"
+
+#: vt1500admin/templates/results.html:39
+msgid "Voting ended at"
+msgstr "Fin de la période de vote"
+
+#: vt1500admin/templates/results.html:35
+msgid "Voting started at"
+msgstr "Début de la période de vote"
+
+#: vt1500admin/templates/ballot2.html:28
+msgid "You have already <b>voted</b>."
+msgstr "Vous avez déjà voté."
+
+#: vt1500admin/templates/auth-home.html:39
+#: vt1500admin/templates/auth-voter-home.html:49
+#: vt1500admin/templates/voter-home.html:53
+msgid "election status"
+msgstr "Statut du scrutin"
+
+#: vt1500admin/templates/auth-home.html:35
+#: vt1500admin/templates/auth-voter-home.html:45
+#: vt1500admin/templates/voter-home.html:49
+msgid "election title"
+msgstr "Nom du scrutin"
+
+#: vt1500admin/templates/election.html:82
+msgid "hours"
+msgstr "heures"
+
+#: vt1500admin/templates/create2.html:46
+#: vt1500admin/templates/election.html:65
+msgid "status"
+msgstr "Statut"

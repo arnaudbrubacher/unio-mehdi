@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checking your vote{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <div class="ballot__screen">
+        <div class="ballot-info-div">
+        <h5>Election Title</h5>
+        <h3>{{election.name}}</h3>
+
+        <h5>Question</h5>
+        <h3>{{election.question}}</h3>
+          
+        </div>
+
+        <div class="ballot-form-div">
+        {% if confirm_status == 0%}
+
+          <p>Please Enter your ballot confirmation Code</p>
+
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="create-btn-div">
+              <button class="button create-btn">
+                <span class="button__text">Submit</span>
+              </button>  
+            </div>
+
+          </form>
+        </div>
+        {% elif confirm_status == 1 %}
+                <div class="ballot-form-div">
+          <p>Your vote has been recorded as</p>
+          {% if vote == "a" %}
+              <h4>AGAINST</h4>
+          {%else%}
+              <h4>FOR</h4>
+          {% endif %}
+
+        {% else %}
+                  <h5>Wrong Confirmation Code</h5>
+
+       {% endif %}
+        </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}
+            {% blocktrans %} 
+            Ballot {{ballot_id}}
+            {% endblocktrans%}
+{% endblock %}
+
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+  <li class="breadcrumb-item"><a href="{% url 'election' %}"> {% trans "Election" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Ballot" %}</li>
+          </div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+       <div class="screen__content">
+        <div class="ballot-info-div">
+          <h5>Voter: {{voter.email}}</h5>
+        </div>
+      <div class="ballot-form-div" style="margin-top:70px;">
+        {% if just_voted == "YES" %}
+          <h5>{% trans "Thank you. Your vote has been recorded." %} </h5>
+        {% else %}
+          <h5>{% trans "You have already <b>voted</b>." %} </h5>
+        {% endif%}
+        <div style="padding-top:30px">
+          <small>
+            {% blocktrans %} 
+              * You will be able to check the results right after the conclusion of voting phase at {{ election.voting_end_datetime}}.
+            {% endblocktrans%}
+          </small>
+        </div>
+      </div>
+        <div class="back-btn-div">
+            <a href="{% url 'election' %}" class="btn create-btn">{% trans "Back" %}</a>
+        </div>
+  </div>
+{% endblock %}

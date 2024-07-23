@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}
+  {{ election.name }} {% trans "Results" %}
+{% endblock %}
+
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+
+  <li class="breadcrumb-item"><a href="{% url 'election' %}"> {% trans "Election" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Results" %}</li>
+          </div>
+{% endblock %}
+
+{% block content %}
+      <div class="screen__content">
+
+        <h2> {% trans "Election Results" %}</h2>
+        <div style="padding-left:20px;padding-right:20px;margin-top:20px;" class="create-form-div">
+
+        <table class="table">
+          <tbody>
+
+            <tr>
+              <td>{% trans "Election title" %}</td>
+              <td>election.name</td>
+            </tr>
+            <tr>
+              <td>{% trans "# of Voters" %}</td>
+              <td>{{ voters.count }}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting started at" %}</td>
+              <td>{{election.voting_start_datetime}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting ended at" %}</td>
+              <td>{{election.voting_end_datetime}}</td>
+            </tr>
+            <tr><td colspan="2"><br></td></tr>
+
+            <tr>
+              <td>{% trans "Question #1" %}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> <b> <p align="justify"> {{ election.question_1}} </p> </td>
+            </tr>
+            <tr>
+              <td>{% trans "Result #1" %}</td>
+
+              <td>
+              <ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td><li>{% trans "Abstention" %}</li></td>
+                      <td>{{abs_count_1}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "For" %}</li></td>
+                      <td>{{for_count_1}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "Against" %}</li></td>
+                      <td>{{against_count_1}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "Not-Attended" %}</li></td>
+                      <td>{{null_count_1}} votes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ul>
+
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"><img src="{{ election.results_pie_1.url }}" alt="Question #1 Results" style="width:100%"></td>
+            </tr>
+            <tr><td colspan="2"><br></td></tr>
+
+            <tr>
+              <td>{% trans "Question #2" %}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> <b> <p align="justify"> {{ election.question_2}}</p> </td>
+            </tr>
+            <tr>
+              <td>{% trans "Result #2" %}</td>
+              <td>
+              <ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td><li>{% trans "Abstention" %}</li></td>
+                      <td>{{abs_count_2}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "For" %}</li></td>
+                      <td>{{for_count_2}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "Against" %}</li></td>
+                      <td>{{against_count_2}} votes</td>
+                    </tr>
+                    <tr>
+                      <td><li>{% trans "Not-Attended" %}</li></td>
+                      <td>{{null_count_2}} votes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ul>
+
+              </td>            </tr>
+            <tr>
+              <td colspan="2"><img src="{{ election.results_pie_2.url }}" alt="Question #2 Results" style="width:100%"></td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+      </div>
+
+        <div class="mb-4">
+          <div class="create-btn-div">
+              <a href="{% url 'election' %}" class="btn create-btn"> {% trans "Download Election Data" %}</a>
+          </div>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- templates/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Unio online election software{% endblock %}</title>
+</head>
+<body>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#">Elections</a>
+    <a href="../accounts/logout">Logout</a>
+  </div>
+
+  <div class="container">
+    <div class="screen">
+        <main>
+          {% block content %}
+          {% endblock %}
+        </main> 
+    </div>
+  </div>
+</body>
+</html>

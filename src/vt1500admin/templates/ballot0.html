@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Ballot {{ballot_id}}{% endblock %}
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+  <li class="breadcrumb-item"><a href="{% url 'election' %}"> {% trans "Election" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Ballot" %}</li>
+          </div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+    <div class="ballot__screen">
+      <div class="ballot-form-div">
+        <div style="padding-top:30px">
+          <small> {% trans "* The <b> voting </b> phase starts at {{ election.voting_start_datetime}}. Please visit the voting page after that." %}</small>
+        </div>
+      </div>
+  </div>
+{% endblock %}

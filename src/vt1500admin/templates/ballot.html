@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Ballot {{ballot_id}}{% endblock %}
+
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+                              <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+
+  <li class="breadcrumb-item"><a href="{% url 'election' %}"> {% trans "Election" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Ballot" %}</li>
+          </div>
+{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+       <div class="screen__content">
+
+
+        <div class="ballot-id-div">
+          <h5>Ballot no. #{{ballot_id}}</h5>
+        </div>
+        <div class="ballot-info-div">
+          <h5>Voter: {{voter.email}}</h5>
+        </div>
+        <div class="ballot-form-div">
+        <br>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+          
+          {% for field in form %}
+
+                {% if field.label == "Please enter your vote for Question #1"%}
+                  <h4 style="background-color:black;color:white;text-align:center;"> <b> Question #1 <b></h3>
+                  <p align="justify">{{election.question_1}}</p>
+                    {{ field }}
+                {% elif field.label == "Please enter your vote for Question #2" %}
+                  <h4 style="background-color:black;color:white;text-align:center;"> <b> Question #2 <b></h3>
+                  <p align="justify">{{election.question_2}}</p>
+                        {{ field }}
+                {% else%}
+                {{field.label}}
+                {{field}}
+                {{field.help_text}}
+                {% endif%}
+              <br>
+              <br>
+          {% endfor %}
+            <div class="create-btn-div">
+              <button class="button create-btn" id="btncheck">
+                <span class="button__text">{% trans "Cast Ballot" %}</span>
+              </button>  
+            </div>
+        </div>
+
+          </form>
+      </div>
+  </div>
+{% endblock %}
+
+ {% block javascript %}
+  <script>
+
+$(function() {
+  var chk = $('#check');
+  var btn = $('#btncheck');
+
+  chk.on('change', function() {
+    btn.prop("disabled", !this.checked);//true: disabled, false: enabled
+  }).trigger('change'); //page load trigger event
+});
+  </script>
+  
+
+  {% endblock %}

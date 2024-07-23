@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-13 19:44-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: djui/settings.py:138
+msgid "English"
+msgstr ""
+
+#: djui/settings.py:139
+msgid "French"
+msgstr ""
+
+#: vt1500admin/templates/auth-home.html:29
+msgid ""
+"\n"
+"            <p>\n"
+"              Your role has been defined as the <b> Authority </b> of the "
+"election. In case, that you want to participate in the election as a voter, "
+"please insert add your information in the voters list excel file, same as "
+"other voters.\n"
+"            </p>\n"
+"            <p>\n"
+"              Unio app has been set up to handle one and only one voting "
+"event. You can edit the created election until the notice period. Then, the "
+"app will automatically send each voter an email to notify them about their "
+"voting credentials and instructions. In case of emergency, please do not "
+"hesitate to contact our support team through support@unio.vote .\n"
+"            </p>\n"
+"            "
+msgstr ""
+
+#: vt1500admin/templates/base.html:10
+msgid "UNIO Voting app"
+msgstr ""

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}
+{% trans "Voters' List" %}
+{% endblock %}
+
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+
+  <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'election' %}"> {% trans "Election" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Voters' List" %}</li>
+          </div>
+{% endblock %}
+
+{% block content %}
+      <div class="screen__content">
+    <h5>{% trans "List of the election voters" %}</h5>
+<table class="table table-striped text-center">
+  <thead class="thead-dark">
+    <tr>  
+      <th>#</th>
+      <th>{% trans "Ballot ID" %}</th>
+      <th>{% trans "vote_1" %}</th>
+      <th>{% trans "vote_2" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for voter in voters %}
+      {% if voter.is_voted == True %}
+      <tr>
+        <td>{{forloop.counter|add:voters.start_index|add:"-1"}} </td>
+        <td>{{ voter.ballot_id }}</td>
+        <td>{{ voter.vote_1 }}</td>
+        <td>{{ voter.vote_2 }}</td>
+      </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+        {% if voters.has_other_pages %}
+          <ul class="pagination">
+            {% if voters.has_previous %}
+              <li><a href="?page={{ voters.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in voters.paginator.page_range %}
+              {% if voters.number == i %}
+                <li class="active"><span>&nbsp;{{ i }}&nbsp; <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">&nbsp;{{ i }}&nbsp;</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if voters.has_next %}
+              <li><a href="?page={{ voters.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+              <div class="back-btn-div">
+          <a href="{% url 'election' %}" class="btn create-btn">{% trans "Back" %}</a>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2023-09-17 21:27:51\n"
+"PO-Revision-Date: 2023-09-17 21:27:51\n"
+"Last-Translator: Server <root@localhost>\n"
+"Language-Team: English <webmaster@localhost>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: vt1500admin/templates/login-sent.html:12
+msgid ""
+"\n"
+"          If your email address is registered, an email would be sent to you shortly. The email contains a one-time use login link. Please tap the link to login into UNIO CSN-FSSS SPBTPA (Catgorie 3) voting app. It is safe to close this tab.   \n"
+"          "
+msgstr ""
+"Si votre adresse courriel est dans la liste des membres de CSN-FSSS, SPBTPA (Catégorie 3)\r\n"
+"vous recevrez un lien de connexion unique à cette adresse courriel.\r\n"
+"\r\n"
+"Cliquez sur le lien pour vous connecter à l’application de vote UNIO."

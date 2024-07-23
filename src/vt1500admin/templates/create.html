@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}{% trans "Create New Election (1/2)" %}{% endblock %}
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+
+  <li class="breadcrumb-item active">{% trans "Create New Election" %}</li>
+          </div>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="screen__content">
+
+      <div style="width:100%">
+        <h4>{% trans "Create new election (1/2)" %}</h4>
+        <h5>{% trans "Please input the Election Data" %}</h5>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form.non_field_errors }}
+          {% for field in form %}
+
+                {% if field.label == "Voting starts at" or field.label == "Voting ends at" %}
+                    <div class="form__label">
+                      {% if field.label == "Voting starts at" %}
+                      <label for="{{ field.id_for_label }}">le vote commence à</label>
+                      {% else%}
+                      <label for="{{ field.id_for_label }}">le vote se termine à</label>
+                      {% endif%}
+                    </div>
+                    <div class="form__item">
+                      {% if field.errors %}
+                          {% for error in field.errors %}
+                              <p style="color: red;"> {{ error }} <p>
+                           {% endfor %}
+                      {% endif %}                      
+                    </div>
+                  <div class="form__item">
+                    {{ field }}
+                {% elif field.label == "Voting start time" or field.label == "Voting end time" %}
+                    {{ field }}
+                  </div>
+
+                {% else %}
+                      <div class="form__label">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                      </div>
+                      <div class="form__item">
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <p style="color: red;"> {{ error }} <p>
+                             {% endfor %}
+                        {% endif %}                      
+                      </div>
+                      <div class="form__item">
+                        {{ field }}
+                      </div>
+                {% endif%}
+          {% endfor %}
+        <div class="create-btn-div">
+          <button id="create-btn-id" class="button create-btn">
+            <span class="button__text">{% trans "Next" %}</span>
+          </button> 
+        </div>
+      </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LePfQMoAAAAAEQVlMGeSRnEZobLRzZ-sbvekkeG"></script>
+      <div class="screen__content">
+        <form class="form__class" method="post">
+              {% csrf_token %}
+            {{ form.non_field_errors }}
+                <div class="form__item">
+                  {{ form.email.errors }}
+                  <label for="{{ form.username.id_for_email }}">{% trans "Please enter your email to login." %}</label>
+                </div>
+                <div class="form__item">
+                  {{ form.email }}
+                </div>
+            <div class="create-btn-div">
+              <button id="create-btn-id" class="button create-btn" onclick="onClick">
+                <span class="button__text">{% trans "Login" %}</span>
+              </button> 
+            </div>
+        </form>
+      </div> 
+    </div>
+
+{% endblock %}
+
+
+<script>
+function onClick(e) {
+  e.preventDefault();
+  grecaptcha.enterprise.ready(async () => {
+    // localhost
+    const token = await grecaptcha.enterprise.execute('6LePfQMoAAAAAEQVlMGeSRnEZobLRzZ-sbvekkeG', {action: 'LOGIN'});
+    
+    // production
+    // const token = await grecaptcha.enterprise.execute('6LfybQMoAAAAAFY6u_s2Li1pQz9ONv84_Dc_FAwb', {action: 'LOGIN'});
+
+    // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+    // reCAPTCHA Enterprise to the end user's browser.
+    // This token must be validated by creating an assessment.
+    // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
+  });
+}
+</script>

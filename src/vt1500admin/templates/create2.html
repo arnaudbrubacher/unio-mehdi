@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}{% trans "Create New Election (2/2)" %}{% endblock %}
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+                  <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+
+  <li class="breadcrumb-item"><a href="{% url 'election' %}">{% trans "Election" %}</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'create' %}">{% trans "Create" %}</a></li>
+  <li class="breadcrumb-item active">{% trans "Confirm" %}</li>
+          </div>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="screen__content" id="result">
+ 
+    <div style="width:100%; padding-left:30px">
+    <h4>{% trans "Create new election (2/2)" %}</h4>
+    <h5>{% trans "Please Confirm the election Information" %}</h5>
+    </div>
+    <div style="margin: auto;padding-right:20px;padding-left:20px">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>{% trans "Question #1" %}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> <b> {{ election.question_1}} </td>
+            </tr>
+            <tr>
+              <td>{% trans "Question #2" %}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> <b> {{ election.question_2}} </td>
+            </tr>
+
+            <tr>
+              <td>{% trans "Choices" %}</td>
+              <td>{% trans "Abstain / For / Against" %}</td>
+            </tr>
+            <tr>
+              <td>{% trans "status" %}</td>
+              <td>{{election.get_status_display}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "# of Voters" %}</td>
+              <td> {{ voters|length }} <a href="#" onclick="show('popup2')">{% trans "(View voters list)" %}</a></td>
+            </tr>
+            <tr>
+              <td>{% trans "Notice emails interval" %}</td>
+              <td>{{election.notice_interval_hours}} hours</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Starts at" %}</td>
+              <td>{{election.voting_start_datetime}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Ends at" %}</td>
+              <td>{{election.voting_end_datetime}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <form class="confirm__form__class" action="{% url 'election'%}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+          {% for field in form %}
+                {% if field.help_text == "Par la présente, je confirme que les informations électorales soumises sont légitimes et correctes."%}
+                  <div>
+                    {{ field }}
+                    {{field.help_text}}
+                    {# <a href="{% url 'voters' %}" >(View License Agreement)</a> #}
+                    <a href="#" onclick="show('popup1')">{% trans "(View License Agreement)"%}</a>
+                  </div>
+                {% else%}
+                  <div>
+      
+                    {{ field }}
+                    {{field.help_text}}
+                  </div>
+
+                {% endif%}
+          {% endfor %}
+              <br>
+              <br>
+
+      <div class="create-btn-div">
+        <button class="button create-btn">
+          <span class="button__text"> {% trans "Confirm and Create" %}</span>
+        </button>  
+      </div>
+    </form>
+      <div class="back-btn-div">
+          <a href="{% url 'create' %}" class="btn create-btn">{% trans "Back" %}</a>
+      </div>
+    </div>
+
+<div class="popup" id="popup1">
+  <div class="pop__content">
+  <h4> {% trans "License Agreement of UNIO voting software" %}</h4>
+
+<h5>ARTICLE 6 : ACCORD DE LICENCE</h5>
+
+<h6>
+Le prestataire de services accorde au client une licence non exclusive, non transférable et révocable pour utiliser Unio.vote (ci-après dénommé le "Logiciel") pendant la durée et conformément aux modalités et conditions énoncées dans le présent accord. <br><br>
+</h6>
+
+<h5>ARTICLE 7 : RESTRICTION D’UTILISATION</h5>
+
+<h6>
+
+Le Client ne peut pas :
+
+<ul>
+  <li>
+a)  Copier, reproduire, distribuer ou créer des œuvres dérivées du Logiciel.<br><br>
+</li>
+<li>
+
+b)  Sous-licencier, louer, prêter, vendre, céder ou transférer de quelque manière que ce soit sa licence d'utilisation du Logiciel.<br><br>
+</li>
+<li>
+
+c)  Utiliser le Logiciel de manière contraire aux lois applicables ou aux droits de tiers.<br><br>
+</li>
+<li>
+
+d)  Modifier, désosser, décompiler ou tenter de dériver le code source du Logiciel.<br><br>
+</li>
+</ul>
+</h6>
+
+<h5>ARTICLE 8 : RESPONSABILITÉ</h5>
+<h6>
+
+Le prestataire de services n'assume aucune responsabilité quant à l'utilisation du Logiciel par le client.<br><br>
+</h6>
+
+<h5>ARTICLE 9 : PROPRIÉTÉ INTELLECTUELLE</h5>
+<h6>
+
+<ul>
+<li>
+a)  Le Logiciel et tous les éléments couverts par des droits de propriété intellectuelle et générés par le prestataire de services dans le cadre de la prestation de services au client, appartiendront au prestataire de services.<br><br>
+</li>
+<li>
+
+b)  Par les présentes, le prestataire de services accorde l’autorisation non exclusive, irrévocable et libre de redevances, d’utiliser les éléments créés par le prestataire de services pour les besoins internes du client. Le client ne sera toutefois pas autorisé à copier, modifier, diffuser ou autrement publier les éléments couverts par des droits de propriété intellectuelle et générés par le prestataire de services et ne permettra pas aux tiers de le faire.<br><br>
+</li>
+<li>
+
+c)  Le client est et demeure propriétaire de tous droits de propriété intellectuelle sur les données, fichiers et documents couverts par de telles droit transmis ou mis à la disposition du prestataire de services dans le cadre de l’exécution du contrat.<br><br>
+</li>
+</ul>
+</h6>
+
+
+
+<h5>ARTICLE 10 : ENGAGEMENT DE CONFIDENTIALITÉ ET DE NON-DIVULGATION</h5>
+<h6>
+<ul>
+<li>
+a)  Le prestataire de services s'engage à traiter de manière strictement confidentielle toute information et tout document appartenant au client dont elle pourrait prendre connaissance au cours de la prestation des services et à ne pas les divulguer ni les utiliser au profit de tiers.<br><br>
+</li>
+<li>
+b)  Le prestataire de services s'engage à remettre au client, à l'expiration des présentes, tous les documents mis à sa disposition pour l'exécution des présentes et à ne jamais divulguer, sans le consentement préalable écrit du client, en totalité ou en partie lesdits documents ou les informations qu'ils renferment.<br><br>
+</li>
+</ul>
+</h6>
+
+  <div class="back-btn-div">
+  <a href="#" style="display:flex;position:absolute;right:0;margin-right:20px;padding-bottom:20px;" onclick="hide('popup1')">{% trans "Close" %}</a>
+      </div>
+</div>
+      </div>
+
+<div class="popup" id="popup2">
+  <div class="pop__content">
+  <h4> {% trans "Voters' list" %}</h4>
+
+      <table class="table table-striped text-center" style="height: 100px;overflow-y:scroll;">
+        <thead class="thead-dark">
+          <tr>  
+            <th>#</th>
+            <th>{% trans "First name" %}</th>
+            <th>{% trans "Last name" %}</th>
+            <th>{% trans "Email" %}</th>
+          </tr>
+        </thead>
+        <tbody style="overflow-y:scroll;">
+          {% for voter in voters_page %}
+            <tr>
+              <td>{{forloop.counter|add:voters_page.start_index|add:"-1"}}</td>
+              <td>{{ voter.first_name }}</td>
+              <td>{{ voter.last_name }}</td>
+              <td>{{ voter.email }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+        {% if voters_page.has_other_pages %}
+          <ul class="pagination">
+            {% if voters_page.has_previous %}
+              <li><a href="?page={{ voters_page.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in voters_page.paginator.page_range %}
+              {% if voters_page.number == i %}
+                <li class="active"><span>&nbsp;{{ i }}&nbsp; <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">&nbsp;{{ i }}&nbsp;</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if voters_page.has_next %}
+              <li><a href="?page={{ voters_page.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+              <div class="back-btn-div">
+          <a href="#" onclick="hide('popup2')" class="btn create-btn">{% trans "Back" %}</a>
+      </div>
+      </div>
+      </div>
+{% endblock %}
+  {% block javascript %}
+
+<script>
+$ = function(id) {
+  return document.getElementById(id);
+}
+
+var show = function(id) {
+  $(id).style.display ='block';
+}
+var hide = function(id) {
+  $(id).style.display ='none';
+}
+</script>
+{% endblock%}
+

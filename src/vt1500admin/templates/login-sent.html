@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LfybQMoAAAAAFY6u_s2Li1pQz9ONv84_Dc_FAwb"></script>
+      <div class="screen__content">
+        <div style="padding-left:30px;padding-right:30px;">
+          <p align="justify">
+            {% blocktrans %}
+                Si votre adresse courriel est dans la liste des membres de CSN-FSSS, SPBTPA (Catégorie 3)
+                vous recevrez un lien de connexion unique à cette adresse courriel. Verifiez aussi vos courriels indésirables.
+
+                Cliquez sur le lien pour vous connecter à l’application de vote UNIO.
+            {% endblocktrans %}
+          </p>
+        </div>
+      </div> 
+    </div>
+
+{% endblock %}
+

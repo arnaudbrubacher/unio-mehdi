@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Home{% endblock %}
+{% block breadcrumb %}
+          <div class="breadcrumb bg-dark">
+
+  <li class="breadcrumb-item active">Home</li>
+          </div>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <div class="screen__content">
+   
+        <div style="padding-left:20px;padding-right:20px;">
+
+<div style="padding-left:20px;padding-right:20px;margin-top:20px" >
+        <table class="table">
+          <tbody>
+
+            <tr>
+              <td>{% trans "Name" %}</td>
+              <td>{{user.first_name}} {{user.last_name}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Role" %}</td>
+              <td>{% trans "Voter" %}  </td>
+            </tr>
+
+            {%if voter.is_voted == True%}
+              <tr>
+                <td>{% trans "Voted At" %}</td>
+                <td>{{voter.voted_at}} </td>
+              </tr>
+            {%else%}
+              <tr>
+                <td>{% trans "Voted At" %}</td>
+                <td>Not Voted </td>
+              </tr>
+            {% endif%}
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>{% trans "election title" %}</td>
+              <td>{{election.name}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "election status" %}</td>
+              <td>{{election.get_status_display}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Starts at" %}</td>
+              <td>{{election.voting_start_datetime}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Ends at" %}</td>
+              <td>{{election.voting_end_datetime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        </div>
+        <div style="padding:30px;">
+
+            <p align="justify">
+              {% trans "For more information, please contact : support@unio.vote" %}
+            </p>
+          </div>
+        <div class="mb-4">
+                            {% if voter.is_voted == False %}
+          <div class="create-btn-div">
+          {% if election.status == "v" %}
+              <a href="{% url 'vote' %}" class="btn create-btn"> {% trans "Submit your vote" %}</a>
+          {% elif election.status == "n" or election.status == "p" %}
+              <a href="{% url 'vote' %}" class="btn create-btn disabled">{% trans "Submit your vote" %}</a>
+          {% endif%}
+          </div>
+                  {% endif%}
+          <div class="create-btn-div">
+              <a href="{% url 'election' %}" class="btn create-btn">{% trans "View Election details" %}</a>
+          </div>
+        </div>
+  </div>
+{% endblock %}

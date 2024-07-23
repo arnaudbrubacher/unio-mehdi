@@ -1,0 +1,16 @@
+{
+  "object_id": "0",
+  "style_id": "ballot-style-01",
+  "contests": [
+    {
+      "object_id": "referendum-for-against",
+      "ballot_selections": [
+        {
+          "object_id": "referendum-against-selection",
+          "sequence_order": 0,
+          "vote": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n%}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <div class="screen__content">
+
+<div style="margin-top:20px" >
+        <table class="table">
+          <tbody>
+
+            <tr>
+              <td>{% trans "Name" %}</td>
+            {% if user.first_name == "" and user.last_name == "" %}
+              <td> {{user.email}} </td>
+            {% else %}
+              <td>{{user.first_name}} {{user.last_name}}</td>
+            {%endif%}
+            </tr>
+            <tr>
+              <td>{% trans "Role" %}</td>
+              <td>{% trans "Authority and Voter" %}  </td>
+            </tr>
+            {%if voter.is_voted == True%}
+              <tr>
+                <td>{% trans "Voted At" %}</td>
+                <td>{{voter.voted_at}} </td>
+              </tr>
+            {%else%}
+              <tr>
+                <td>{% trans "Voted At" %}</td>
+                <td>Not Voted </td>
+              </tr>
+            {% endif%}
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>{% trans "election title" %}</td>
+              <td>{{election.name}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "election status" %}</td>
+              <td>{{election.get_status_display}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Starts at" %}</td>
+              <td>{{election.voting_start_datetime}}</td>
+            </tr>
+            <tr>
+              <td>{% trans "Voting Ends at" %}</td>
+              <td>{{election.voting_end_datetime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="padding:30px;">
+            <p align="justify">
+              {% blocktrans %}
+              UNIO app has been set up to handle one and only one voting event. You can edit the created election until the notice period. Then, the app will automatically send each voter an email to notify them about their voting credentials and instructions. In case of emergency, please do not hesitate to contact our support team through support@unio.vote .
+              {% endblocktrans %}
+            </p>
+      </div>
+        <div class="mb-4">
+        {% if voter.is_voted == False %}
+          <div class="create-btn-div">
+          {% if election.status == "v" %}
+              <a href="{% url 'vote' %}" class="btn create-btn"> {% trans "Submit your vote" %}</a>
+          {% elif election.status == "n" or election.status == "p" %}
+              <a href="{% url 'vote' %}" class="btn create-btn disabled">{% trans "Submit your vote" %}</a>
+          {% endif%}
+          </div>
+        {% endif%}
+          <div class="create-btn-div">
+          {% if election == None %}
+              <a href="{% url 'create' %}" class="btn create-btn">{% trans "Create New Election" %}</a>
+          {% else %}
+              <a href="{% url 'election' %}" class="btn create-btn">{% trans "View Election" %}</a>
+          {% endif%}
+          </div>
+
+        </div>
+
+      </div>
+
+  </div>
+{% endblock %}

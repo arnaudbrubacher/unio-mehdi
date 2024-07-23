@@ -1,0 +1,141 @@
+<!-- templates/base.html -->
+{% load static %}
+{% load i18n%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>
+    {% block title %}{% trans "UNIO Voting app" %}{% endblock %}
+  </title>
+
+<link rel="shortcut icon" type="image/png" href="{% static 'favicon.jpeg' %}" >
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  {% block stylesheet %}{% endblock %}
+</head>
+<body>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+              <a href="{% url 'index' %}" class="navbar-brand">UNIO</a>
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navNavbar"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navNavbar">
+                  <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                      {% if election.status == "t"  %}                        
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'results' %}">{% trans "Election Results" %}</a>
+                          </li>
+                      {% endif%}
+                      {% if election.status == "v" or election.status == "y"  %}                        
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'election' %}">{% trans "Active Election" %}</a>
+                          </li>
+                      {% endif%}
+                      {% for group in user.groups.all %}
+                          {% if group.name == 'authority' %}
+                              {% if election == None %}
+                              <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'create' %}">{% trans "New election" %}</a>
+                              </li>
+                              {% endif%}
+                          {% elif group.name == 'voter'%}
+                              {% if election.status == "v" %}
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'vote' %}">{% trans "VOTE" %}</a>
+                                </li>
+                              {% endif%}
+
+                          {% endif %}
+                      {% endfor %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url 'logout' %}">{% trans "Log out" %}</a>
+                      </li>
+
+
+                      <li class="dropdown" id="language-switcher">
+                          <form action="{% url 'set_language' %}" method="post">
+                              {% csrf_token %}
+                              <input name="next" type="hidden" value="/" />
+
+                              <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+
+                                    <option
+                                      value="{{ language.code }}"
+                                      {% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}
+                                      data-content='<img src="/static/img/flags/{{ language.code }}.png">
+                                      <span style="display:inline-block; width:100px; padding-left: 10px; text-shadow:none">
+                                        {{ language.name_local }}
+                                        <!-- span style="color:#999;">&nbsp;[{{ language.code }}]</span -->
+                                      </span>'>
+                                      {{ language.code }}
+                                    </option>
+
+                                {% endfor %}
+                              </select>
+                          </form>
+                      </li>
+                    {% endif %}
+                  </ul>
+              </div>
+
+              {% block breadcrumb %}
+
+              {% endblock %}
+      </nav>
+
+      <div class="container">
+          <div class="screen">
+          <div class="screen__header">
+              <h4 style="min-width:200px;padding-top:20px;"><b>UNIO<b></h4>
+              <h5 style="display:flex;position:relative;">{% trans "Demo" %}</h5>
+          </div>
+
+          {% block content %}
+          {% endblock %}
+        </div>
+
+      </div>
+      <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+        
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+      <script src="{% static 'js/main.js' %}"></script>
+
+  {% block javascript %}
+  <script>
+  $('#language-list a').on('click', function(event) {
+    event.preventDefault();
+    var target = $(event.target);
+    var url = target.attr('href');
+    var language_code = target.data('language-code');
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {language: language_code},
+        headers: {"X-CSRFToken": getCookie('csrftoken')}
+    }).done(function(data, textStatus, jqXHR) {
+        reload_page();
+    });
+});
+
+  </script>
+  
+
+  {% endblock %}
+
+</body>
+</html>
